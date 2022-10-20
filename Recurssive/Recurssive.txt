@@ -1,0 +1,85 @@
+Pros
+
+Bridges the gap between elegance and complexity
+Can reduce time complexity by memoization 
+works well with recurssive ds like trees and graphs
+Reduces the need of complex loops and axilliary data structure
+
+Cons
+
+Slowness due to CPU overhead
+can be uneccessary complex if poorly constructed
+Can lead to memory flow error and stack overflow expeption
+
+Call Stack
+
+public String A()
+{
+	return "hello" + B();
+}
+
+public String B()
+{
+	return "my"  +C();
+}
+public String C()
+{
+	return "friend"  +B();
+}
+Stack frame
+A - > B - > C -> B -> A
+
+public String A()
+{
+	return A();
+}
+calling A continuously. We need a base case.
+
+public String reverseString(String input)
+{
+	if(input.equals(""))
+		return "";
+	return reverseString(input.substring(1)+input.charAt(0));
+}
+What is base case?
+What is the smallest amount of work we can contribute?
+
+
+public String palindrome(String input)
+{
+	if(input.length() == 0 || input.length() == 1)
+		return true;
+	 Do something to shrink the input space.
+	if(input.charAt(0) == input.charAt(input.length()-1))
+		return palindrome(input.substring(1, input.length()-1));
+	return false;
+}
+
+Recussion with numbers
+
+Decimal to binary
+public String findBinary(int input, String result)
+{
+	if(input==0)
+		return result;
+	result+=input%2;
+	return findBinary(input/2, result);
+}
+
+Sum of n natural numbers
+
+public int sumOfN(int input)
+{
+	if(input <= 1)
+		return input;
+	return input + sumOfN(input-1);
+}
+
+public ListNode reverseLL(ListNode head)
+{
+	if(head == null || head.next == null) return head;
+	ListNode node = reverseLL(head.next);
+	head.next.next=head;
+	head.next=null;
+	return node;
+}
