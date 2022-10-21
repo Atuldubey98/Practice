@@ -68,6 +68,6 @@ public class BinaryTreeRec{
 	{
 		Node root = createBinaryTree();
 		inOrder(root);
-		System.out.println(isBalanced(root));
+
 	}
 }
